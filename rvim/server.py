@@ -5,17 +5,19 @@ import gevent.event
 import bottle
 import subprocess
 import StringIO
+import os
 
 pending = []
 next_id = 0
 event = gevent.event.Event()
+root = '/'
 
 @bottle.route('/file/<path:path>')
 def file(path):
     # Handle a request from the client to download a whole file from the
     # server.  Open the file with a4, and then send the file down to the
     # client.
-    return bottle.static_file(path, root='.')
+    return bottle.static_file(path, root='/')
 
 @bottle.get('/open/<id:int>')
 def open(id):
@@ -30,8 +32,14 @@ def open():
     global next_id
     path = bottle.request.json['path']
     data = {'id': next_id, 'path': path}
+    if not os.path.exists(os.path.join(root, path)):
+        bottle.response.status = 404
+        return {'status': 'no such file'}
+
     pending.append(data)
     next_id += 1
+    event.set()
+    event.clear()
     return data
 
 @bottle.post('/patch')
@@ -39,8 +47,14 @@ def patch():
     # Post a diff of the given file and apply it.
     patch = bottle.request.json['patch']
     path = bottle.request.json['path']
+    print patch
+    p = subprocess.Popen(('patch', '-t', path), stdin=subprocess.PIPE)
+    p.communicate(input=patch)
+    if p.returncode != 0:
+        bottle.response.status = 500
+        return {'status': 'patch failure'}
     return {'status': 'success'}
-
+    
 def main():
     bottle.run(host='', port=40000, server='gevent', debug=True, reload=True)
       
