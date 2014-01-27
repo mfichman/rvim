@@ -18,8 +18,9 @@ class Cli:
         return json.load(self.conn.getresponse())
 
 def main():
-    pass
+    c = Cli('localhost', 40000)  
+    for arg in sys.argv[1:]:
+        c.open(arg)
 
 if __name__ == '__main__':
-    c = Cli('localhost', 40000)
-    c.open('foo/test.txt')
+    main()
