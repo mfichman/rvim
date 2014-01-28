@@ -2,6 +2,7 @@
 
 import rvim
 import sys
+import os
 
 def main():
     c = rvim.Client()
