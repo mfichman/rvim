@@ -10,9 +10,9 @@ import os
 pending = []
 next_id = 0
 event = gevent.event.Event()
-root = '/'
+root = '.'
 
-@bottle.route('/file/<path:path>')
+@bottle.get('/file/<path:path>')
 def file(path):
     # Handle a request from the client to download a whole file from the
     # server.  Open the file with a4, and then send the file down to the

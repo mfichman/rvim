@@ -5,6 +5,7 @@ import urllib
 import json
 import sys
 import os
+import subprocess
 
 class Cli:
     def __init__(self, host, port):
