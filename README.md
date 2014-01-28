@@ -14,8 +14,14 @@ git clone https://github.com/mfichman/rvim.git
 cd rim
 python setup.py install
 echo "au VimEnter * :py import rvim.vimplugin" >> ~/.vimrc
+
+cat <<EOF >> ~/.bashrc
+export RVIMHOST=<remote-host>
+export RVIMPORT=<remote-port>
+EOF
 ```
 
+You need to do these steps on your local machine and your remote machine. 
 Your Vim must be compiled with `+python`.
 
 Usage
@@ -24,10 +30,6 @@ Usage
 On the remote system, run:
 
 ```
-cat > ~/.bashrc <<EOF
-set RVIMHOST=<remote-host>
-set RVIMPORT=<remote-port>
-EOF
 rvim-server
 ```
 
@@ -37,8 +39,6 @@ later version.  For now, restrict your usage of rvim-server to VPNs, etc.
 
 On the local system, run:
 ```
-set RVIMHOST=<remote-host>
-set RVIMPORT=<remote-port>
 rvim-client
 ```
 
