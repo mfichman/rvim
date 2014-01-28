@@ -21,22 +21,40 @@ Your Vim must be compiled with `+python`.
 Usage
 -----
 
-1. On the remote system, run `rvim-server`.  <font
-   color='red'>**Warning**</font>: Do not run rvim-server on a public-facing
-   server, as it does not use authentication or SSH.  This may be improved in a
-   later version.  For now, restrict your usage of rvim-server to VPNs, etc.
+On the remote system, run:
 
-2. On both your local and remote system, set the following environment variables
-   in your shell:
-   ```
-   set RVIMHOST=<remote-host>
-   set RVIMPORT=<remote-port>
-   ```
+```
+cat > ~/.bashrc <<EOF
+set RVIMHOST=<remote-host>
+set RVIMPORT=<remote-port>
+EOF
+rvim-server
+```
 
-3. Run `RVIM=1 gvim /path/to/remote/file` on your local system.
+<font color='red'>**Warning**</font>: Do not run rvim-server on a public-facing
+server, as it does not use authentication or SSH.  This may be improved in a
+later version.  For now, restrict your usage of rvim-server to VPNs, etc.
 
-4. Alternatively, you can run `rvim-client <remote-host>:<remote-port>` on your
-   local system, and then run `rvim /path/to/remote/file` on your remote system. 
+On the local system, run:
+```
+set RVIMHOST=<remote-host>
+set RVIMPORT=<remote-port>
+rvim-client
+```
+
+To open a file locally, run:
+```
+RVIM=1 gvim /path/to/remote/file
+```
+
+To open a file remotely, but edit it locally in graphical Vim, run:
+```
+rvim /path/to/remote/file
+```
+
+This is useful for the situation where you have a remote shell open, but you still 
+want to edit locally due to bandwidth constraints, or so that you can use graphical
+Vim (yay for nice fonts and themes!) rather than the console.
 
 
 
