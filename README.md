@@ -1,5 +1,5 @@
-RVIM: Remote Editing Vim Plugin
-===============================
+RVIM: Remote Editing for Vim
+============================
 
 RVIM is a plugin for remote Vim editing.  It runs a simple web app that serves
 files and accepts patches to files.  The Vim plugin posts a "patch" to the web
