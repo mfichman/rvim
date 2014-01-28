@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name = 'rvim',
-    version = '0.0.1',
+    version = '0.0.2',
     author = 'Matt Fichman',
     author_email = 'matt.fichman@gmail.com',
     description = ('Remote VIM-integrated fileserver and client'),
