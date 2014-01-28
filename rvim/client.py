@@ -42,7 +42,7 @@ class Client(watchdog.events.FileSystemEventHandler):
         # Wait for the next file to open
         try:
             self.conn.request('GET', '/open/%d' % id)
-            return json.load(self.conn2.getresponse())
+            return json.load(self.conn.getresponse())
         except httplib.HTTPException, e:
             self.conn.close()
             raise
