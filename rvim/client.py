@@ -47,7 +47,7 @@ class Client:
         in unified diff format.
         """
         data = json.dumps({'path': path, 'patch': patch})
-        return json.load(self.request('POST', '/patch', data, headers))
+        return json.load(self.request('POST', '/patch', data))
 
     def next(self, id):
         """
@@ -61,7 +61,7 @@ class Client:
         Request that a remote Vim open the file by remote path name.
         """
         data = json.dumps({'path': path})
-        return json.load(self.request('POST', '/open/%d' % id))
+        return json.load(self.request('POST', '/open', data))
 
 def main():
     c = Client()
