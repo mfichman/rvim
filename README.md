@@ -21,10 +21,10 @@ Your Vim must be compiled with `+python`.
 Usage
 -----
 
-On the remote system, run `rvim-server`.  **Warning**: Do not run rvim-server
-on a public-facing server, as it does not use authentication or SSH.  This may
-be improved in a later version.  For now, restrict your usage of rvim-server to
-VPNs, etc.
+On the remote system, run `rvim-server`.  <font
+color='red'>**Warning**</font>: Do not run rvim-server on a public-facing
+server, as it does not use authentication or SSH.  This may be improved in a
+later version.  For now, restrict your usage of rvim-server to VPNs, etc.
 
 On both your local and remote system, set the following environment variables
 in your shell:
