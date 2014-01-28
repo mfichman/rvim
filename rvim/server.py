@@ -56,7 +56,7 @@ def patch():
     return {'status': 'success'}
     
 def main():
-    bottle.run(host='', port=40000, server='gevent', debug=True, reload=True)
+    bottle.run(host='', port=int(os.environ['RVIMPORT']), server='gevent')
       
 if __name__ == '__main__':
     main()
