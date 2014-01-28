@@ -10,7 +10,7 @@ setup(
     keywords = ('vim', 'remote'),
     url = '',
     packages = ['rvim'],
-    requires = ('bottle', 'gevent'),
+    requires = ('bottle', 'gevent', 'watchdog'),
     entry_points = {
         'console_scripts': (
             'rvim = rvim.cli:main',
