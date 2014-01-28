@@ -33,7 +33,7 @@ On the remote system, run:
 rvim-server
 ```
 
-<span style='color:red'>**Warning**</span>: Do not run rvim-server on a public-facing
+**Warning**: Do not run rvim-server on a public-facing
 server, as it does not use authentication or SSH.  This may be improved in a
 later version.  For now, restrict your usage of rvim-server to VPNs, etc.
 
