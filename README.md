@@ -10,9 +10,7 @@ Setup
 -----
 
 ```
-git clone https://github.com/mfichman/rvim.git
-cd rim
-python setup.py install
+pip install rvim
 echo "au VimEnter * :py import rvim.vimplugin" >> ~/.vimrc
 
 cat <<EOF >> ~/.bashrc

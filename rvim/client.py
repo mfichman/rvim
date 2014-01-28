@@ -14,9 +14,9 @@ class ClientException(Exception):
     pass
 
 class Client:
-    def __init__(self, host=os.environ['RVIMHOST'], port=int(os.environ['RVIMPORT'])):
-        self.host = host
-        self.port = port
+    def __init__(self, host=None, port=None):
+        self.host = host or os.environ['RVIMHOST']
+        self.port = port or int(os.environ['RVIMPORT'])
         self.conn = httplib.HTTPConnection(host, port)
 
     def request(self, method, path, data=None):
@@ -27,7 +27,9 @@ class Client:
             headers = {'Content-Type': 'application/json'} if data else {}
             self.conn.request(method, path, data, headers)
             response = self.conn.getresponse()
-            if response.status != 200:
+            if response.status == 404:
+                raise ClientExcpetion('file not found')
+            elif response.status != 200:
                 raise ClientException(json.load(response)['status'])
             else:
                 return response
