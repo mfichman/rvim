@@ -9,11 +9,11 @@ lets you remote open files both from a remote shell and from within Vim itself.
 Setup
 -----
 
-To setup, download this repo and then run `python setup.py install`.  Edit your
-~/.vimrc to include this line:
-
 ```
-au VimEnter * :py import rvim.vimplugin
+git clone https://github.com/mfichman/rvim.git
+cd rim
+python setup.py install
+echo "au VimEnter * :py import rvim.vimplugin" >> ~/.vimrc
 ```
 
 Your Vim must be compiled with `+python`.
