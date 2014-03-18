@@ -28,7 +28,7 @@ class Client:
             self.conn.request(method, path, data, headers)
             response = self.conn.getresponse()
             if response.status == 404:
-                raise ClientExcpetion('file not found')
+                raise ClientException('file not found')
             elif response.status != 200:
                 raise ClientException(json.load(response)['status'])
             else:

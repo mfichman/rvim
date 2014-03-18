@@ -8,9 +8,9 @@ setup(
     description = ('Remote VIM-integrated fileserver and client'),
     license = 'MIT',
     keywords = ('vim', 'remote'),
-    url = '',
+    url = 'https://github.com/mfichman/rvim',
     packages = ['rvim'],
-    requires = ('bottle', 'gevent', 'watchdog'),
+    requires = ('bottle', 'gevent'),
     entry_points = {
         'console_scripts': (
             'rvim = rvim.cli:main',
